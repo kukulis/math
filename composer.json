@@ -1,0 +1,35 @@
+{
+  "name": "kukulis/math",
+  "type": "project",
+  "description": "Mathematical functions for other projects",
+  "keywords": [
+    "kukulis",
+    "math",
+    "library"
+  ],
+  "license": "GNU",
+  "require": {
+    "php": "^7.4",
+    "ext-intl": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.3"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Kukulis\\Math\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

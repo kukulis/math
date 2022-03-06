@@ -1,0 +1,8 @@
+/vendor
+.env
+.phpunit.result.cache
+
+# Project scope
+/.idea/
+/xdebug.ini
+/.vscode/
