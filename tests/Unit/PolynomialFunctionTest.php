@@ -9,14 +9,13 @@ class PolynomialFunctionTest extends TestCase
 {
     public function testFunction()
     {
-        $function = new PolynomialFunction();
-
-        $function->addPoint(-PHP_FLOAT_MAX, 0);
-        $function->addPoint(0.25, 0);
-        $function->addPoint(1, 0.5);
-        $function->addPoint(4, 1);
-        $function->addPoint(PHP_FLOAT_MAX, 1);
-
+        $function = PolynomialFunction::builder()
+            ->addPoint(-PHP_FLOAT_MAX, 0)
+            ->addPoint(0.25, 0)
+            ->addPoint(1, 0.5)
+            ->addPoint(4, 1)
+            ->addPoint(PHP_FLOAT_MAX, 1)
+            ->build();
 
         $this->assertEquals(0, $function->calculate(0));
         $this->assertEquals(0, $function->calculate(0.25));

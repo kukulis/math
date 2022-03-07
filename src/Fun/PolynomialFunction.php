@@ -7,6 +7,14 @@ class PolynomialFunction implements FunctionInterface
     /** @var Point[] */
     protected array $points = [];
 
+    /**
+     * @param Point[] $points
+     */
+    private function __construct(array $points)
+    {
+        $this->points = $points;
+    }
+
     public function calculate(float $x): float
     {
         list($pointFrom, $pointTo) = $this->findInterval($x);
@@ -25,13 +33,6 @@ class PolynomialFunction implements FunctionInterface
         return $pointFrom->getY() + $subDy;
     }
 
-
-    public function addPoint(float $x, float $y)
-    {
-        $this->points[] = new Point($x, $y);
-
-        usort($this->points, fn(Point $p1, Point $p2) => $p1->getX() <=> $p2->getX());
-    }
 
     /**
      * @return Point[] array which consist of two points.
@@ -54,4 +55,12 @@ class PolynomialFunction implements FunctionInterface
 
         return [$lastPoint, new Point(PHP_FLOAT_MAX, $lastPoint->getY())];
     }
+
+    public static function builder(): PolynomialFunctionBuilder
+    {
+        return new PolynomialFunctionBuilder(function ($points) {
+            return new PolynomialFunction($points);
+        });
+    }
+
 }
